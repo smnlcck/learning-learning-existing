@@ -1,0 +1,143 @@
+/* Learning — Simon Alcock design system (Inter, monochrome) */
+
+.learning {
+  --sa-title: #333333;
+  --sa-body: #666666;
+  --sa-card: #f5f5f5;
+  --sa-rule: #e6e6e6;
+
+  /* Motion tokens */
+  --learning-rise: 28px;
+  --learning-duration: 720ms;
+  --learning-stagger: 90ms;
+  --learning-ease: cubic-bezier(0.22, 1, 0.36, 1); /* soft ease-out, no overshoot */
+
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 64px 16px;
+}
+
+.learning__heading {
+  margin: 0 0 24px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sa-body);
+}
+
+.learning__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.learning__item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--sa-rule);
+}
+
+.learning__item:last-child {
+  border-bottom: 1px solid var(--sa-rule);
+}
+
+.learning__logo {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background: var(--sa-card);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.learning__logo img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+
+.learning__text {
+  min-width: 0;
+}
+
+.learning__title {
+  margin: 0 0 4px;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--sa-title);
+}
+
+.learning__year {
+  font-weight: 400;
+  color: var(--sa-body);
+}
+
+.learning__institution {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--sa-body);
+}
+
+/* ---------- Motion: rows rise and dock into place ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .learning__item {
+    opacity: 0;
+    transform: translate3d(0, var(--learning-rise), 0);
+    transition:
+      opacity var(--learning-duration) var(--learning-ease),
+      transform var(--learning-duration) var(--learning-ease);
+    transition-delay: calc(var(--i, 0) * var(--learning-stagger));
+    will-change: opacity, transform;
+  }
+
+  .learning__list.is-visible .learning__item {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Logo trails its row slightly, so it "settles" a beat after the text */
+  .learning__logo img {
+    transform: translate3d(0, 8px, 0) scale(0.94);
+    transition: transform var(--learning-duration) var(--learning-ease);
+    transition-delay: calc(var(--i, 0) * var(--learning-stagger) + 80ms);
+  }
+
+  .learning__list.is-visible .learning__logo img {
+    transform: none;
+  }
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 480px) {
+  .learning__item {
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .learning__logo {
+    flex-basis: 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+  }
+
+  .learning__logo img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .learning__title {
+    font-size: 1rem;
+  }
+}
