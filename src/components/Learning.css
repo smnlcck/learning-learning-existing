@@ -12,6 +12,10 @@
   --title: #333333;
   --tab-text: #666666;
   --rule: #e6e6e6;
+  /* Layout tokens match the case-studies section, so the two stack flush */
+  --page: #f4f4f6;
+  --surface: #ffffff;
+  --max: 1160px;
   --font-display: "EudoxusSans-Medium", Helvetica, Arial, sans-serif;
   --font-body: Helvetica, "system-ui", -apple-system, Roboto, "Lucida Sans", sans-serif;
 
@@ -23,14 +27,28 @@
 
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  max-width: 880px;
+  background: var(--page);
+  padding-block: 96px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.learning__inner {
+  max-width: var(--max);
   margin: 0 auto;
-  padding: 64px 16px;
+  display: grid;
+  gap: 32px;
+}
+
+.learning__card {
+  padding: 44px;
+  background: var(--surface);
+  border-radius: 28px;
 }
 
 .learning__heading {
   /* Matches the hero's small display labels */
-  margin: 0 0 24px;
+  margin: 0 0 4px;
   font: 400 14px/1 var(--font-display);
   letter-spacing: -0.14px;
   color: var(--tab-text);
@@ -50,8 +68,14 @@
   border-top: 1px solid var(--rule);
 }
 
+/* Dividers only between rows; the card edge frames the first and last */
+.learning__item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
 .learning__item:last-child {
-  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0;
 }
 
 .learning__logo {
@@ -124,6 +148,12 @@
 }
 
 /* ---------- Small screens ---------- */
+
+@media (max-width: 880px) {
+  .learning { padding-block: 56px; }
+  .learning__inner { gap: 20px; }
+  .learning__card { padding: 24px; border-radius: 22px; }
+}
 
 @media (max-width: 480px) {
   .learning__item {

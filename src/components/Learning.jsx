@@ -104,17 +104,21 @@ export default function Learning({ heading = "Learning", items = learningItems }
 
   return (
     <section className="learning" aria-labelledby="learning-heading">
-      <h2 id="learning-heading" className="learning__heading">
-        {heading}
-      </h2>
-      <ul
-        ref={listRef}
-        className={`learning__list${visible ? " is-visible" : ""}`}
-      >
-        {items.map((item, i) => (
-          <LearningItem key={`${item.title}-${item.year}`} index={i} {...item} />
-        ))}
-      </ul>
+      <div className="learning__inner">
+        <h2 id="learning-heading" className="learning__heading">
+          {heading}
+        </h2>
+        <div className="learning__card">
+          <ul
+            ref={listRef}
+            className={`learning__list${visible ? " is-visible" : ""}`}
+          >
+            {items.map((item, i) => (
+              <LearningItem key={`${item.title}-${item.year}`} index={i} {...item} />
+            ))}
+          </ul>
+        </div>
+      </div>
     </section>
   );
 }
