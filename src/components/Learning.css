@@ -63,7 +63,7 @@
 .learning__item {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
   padding: 20px 0;
   border-top: 1px solid var(--rule);
 }
@@ -157,7 +157,7 @@
 
 @media (max-width: 480px) {
   .learning__item {
-    gap: 16px;
+    gap: 24px;
     align-items: flex-start;
   }
 
