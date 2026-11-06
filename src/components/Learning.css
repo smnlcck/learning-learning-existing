@@ -1,9 +1,19 @@
-/* Learning — Simon Alcock design system (Inter, monochrome) */
+/* Learning — type and colour tokens match hero-hero-existing.
+   Same variable names as the hero, so the sections share them on one page. */
+
+@font-face {
+  font-family: "EudoxusSans-Medium";
+  src: url("https://simonalcock.ie/wp-content/uploads/custom_fonts/EudoxusSans-Medium.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
 
 .learning {
-  --sa-title: #333333;
-  --sa-body: #666666;
-  --sa-rule: #e6e6e6;
+  --title: #333333;
+  --tab-text: #666666;
+  --rule: #e6e6e6;
+  --font-display: "EudoxusSans-Medium", Helvetica, Arial, sans-serif;
+  --font-body: Helvetica, "system-ui", -apple-system, Roboto, "Lucida Sans", sans-serif;
 
   /* Motion tokens */
   --learning-rise: 28px;
@@ -11,19 +21,19 @@
   --learning-stagger: 90ms;
   --learning-ease: cubic-bezier(0.22, 1, 0.36, 1); /* soft ease-out, no overshoot */
 
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
   max-width: 880px;
   margin: 0 auto;
   padding: 64px 16px;
 }
 
 .learning__heading {
+  /* Matches the hero's small display labels */
   margin: 0 0 24px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--sa-body);
+  font: 400 14px/1 var(--font-display);
+  letter-spacing: -0.14px;
+  color: var(--tab-text);
 }
 
 .learning__list {
@@ -37,11 +47,11 @@
   align-items: center;
   gap: 24px;
   padding: 20px 0;
-  border-top: 1px solid var(--sa-rule);
+  border-top: 1px solid var(--rule);
 }
 
 .learning__item:last-child {
-  border-bottom: 1px solid var(--sa-rule);
+  border-bottom: 1px solid var(--rule);
 }
 
 .learning__logo {
@@ -64,23 +74,23 @@
 }
 
 .learning__title {
-  margin: 0 0 4px;
-  font-size: 1.125rem;
-  line-height: 1.35;
-  font-weight: 600;
-  color: var(--sa-title);
+  /* Eudoxus file is the Medium cut, registered at 400 — keep 400 to avoid faux bold */
+  margin: 0 0 6px;
+  font: 400 22px/30px var(--font-display);
+  letter-spacing: normal;
+  color: var(--title);
 }
 
 .learning__year {
-  font-weight: 400;
-  color: var(--sa-body);
+  color: var(--tab-text);
 }
 
 .learning__institution {
   margin: 0;
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  color: var(--sa-body);
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.24px;
+  color: var(--tab-text);
 }
 
 /* ---------- Motion: rows rise and dock into place ---------- */
@@ -133,6 +143,11 @@
   }
 
   .learning__title {
-    font-size: 1rem;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .learning__institution {
+    font-size: 14px;
   }
 }

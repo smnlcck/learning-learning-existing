@@ -1,8 +1,8 @@
-/* Inter is loaded from simonalcock.ie on the real site; fallback stack here */
-body { margin: 0; background: #fff; font-family: "Inter", system-ui, sans-serif; }
-.spacer { height: 70vh; display: grid; place-items: end center; padding-bottom: 32px; color: #666; font-size: 14px; }
+/* Page frame matches hero-hero-existing */
+body { margin: 0; background: #fefefe; color: rgb(80,80,80); font-family: Helvetica, "system-ui", -apple-system, Roboto, sans-serif; }
+.spacer { height: 70vh; display: grid; place-items: end center; padding-bottom: 32px; color: #666; font: 400 14px/1 "EudoxusSans-Medium", Helvetica, Arial, sans-serif; }
 .replay {
   position: fixed; right: 16px; bottom: 16px; padding: 10px 16px;
-  font: 600 14px "Inter", system-ui, sans-serif; color: #333; background: #fff;
+  font: 400 14px/1 "EudoxusSans-Medium", Helvetica, Arial, sans-serif; letter-spacing: -0.14px; color: #333; background: #fff;
   border: 1px solid #333; border-radius: 999px; cursor: pointer;
 }
